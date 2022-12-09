@@ -11,7 +11,7 @@ import { Car, MOCK_AVATAR, MOCK_CARS } from '../../../constants/mock';
 import { TEXT } from '../../../constants/text';
 
 const width = Dimensions.get('screen').width;
-const SLIDE_HEIGHT = 180;
+const SLIDE_HEIGHT = 160;
 
 export const MainHeader = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -57,7 +57,7 @@ export const MainHeader = () => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    paddingBottom: 20,
+    paddingBottom: 10,
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
     backgroundColor: COLORS.dark,
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
   },
   auto: {
     alignItems: 'center',
+    minWidth: 200,
     paddingVertical: 7,
     paddingHorizontal: 12,
     borderRadius: 30,
