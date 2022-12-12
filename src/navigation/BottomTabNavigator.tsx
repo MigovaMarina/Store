@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet,Text } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -16,33 +16,33 @@ const Tab = createBottomTabNavigator<BottomTabNavigatorType>();
 
 const MockScreen = () => <></>;
 
+const getScreenOptions = (bottomInset: number): BottomTabNavigationOptions => ({
+  headerShown: false,
+  tabBarShowLabel: false,
+  tabBarStyle: {
+    position: 'absolute',
+    backgroundColor: COLORS.darkOpaque,
+    borderTopWidth: 0,
+    elevation: 0,
+    height: 70 + bottomInset,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+  tabBarLabelStyle: {
+    color: COLORS.white,
+  },
+  tabBarIconStyle: {
+    backgroundColor: 'red',
+  },
+});
+
 export const BottomTabNavigator = () => {
   const { bottom } = useSafeAreaInsets();
-
-  const screenOptions: BottomTabNavigationOptions = {
-    headerShown: false,
-    tabBarShowLabel: false,
-    tabBarStyle: {
-      position: 'absolute',
-      backgroundColor: COLORS.darkOpaque,
-      borderTopWidth: 0,
-      elevation: 0,
-      height: 70 + bottom,
-      borderTopLeftRadius: 20,
-      borderTopRightRadius: 20,
-    },
-    tabBarLabelStyle: {
-      color: COLORS.white,
-    },
-    tabBarIconStyle: {
-      backgroundColor: 'red',
-    },
-  };
 
   const getColor = (isActive: boolean) => isActive ? COLORS.white : COLORS.whiteOpaque;
 
   return (
-    <Tab.Navigator screenOptions={screenOptions}>
+    <Tab.Navigator screenOptions={() => getScreenOptions(bottom)}>
       <Tab.Screen
         options={{
           tabBarIcon: ({ focused }) => (

@@ -9,4 +9,9 @@ export const TEXT = {
   home: {
     subscriptionEnd: 'Подписка до',
   },
+  materialTop: {
+    services: 'Услуги',
+    subscription: 'Подписка',
+    marketplace: 'Маркетплейс',
+  },
 };
