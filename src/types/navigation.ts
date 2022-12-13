@@ -33,3 +33,11 @@ export type MaterialTopNavigatorType = {
     [MaterialTopNavigatorScreenNames.subscription]: undefined,
     [MaterialTopNavigatorScreenNames.marketplace]: undefined,
 }
+
+export const bottomTabIcons = {
+  [BottomTabScreenNames.home]: 'home',
+  [BottomTabScreenNames.auto]: 'car',
+  [BottomTabScreenNames.services]: 'appstore-o',
+  [BottomTabScreenNames.trips]: 'compass',
+  [BottomTabScreenNames.market]: 'storefront',
+};

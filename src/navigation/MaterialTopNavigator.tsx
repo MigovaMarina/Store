@@ -3,13 +3,19 @@ import { Route, StyleSheet, Text, View } from 'react-native';
 
 import { createMaterialTopTabNavigator, MaterialTopTabNavigationOptions } from '@react-navigation/material-top-tabs';
 
+import { MockScreen } from '../components/MockScreen';
+import { Services } from '../features/home/components/Services';
+
 import { COLORS } from '../constants/colors';
 import { TEXT } from '../constants/text';
 import { MaterialTopNavigatorScreenNames, MaterialTopNavigatorType } from '../types/navigation';
+import { scaleFontSize } from '../units/scaleFontSize';
+
+type MaterialTopNavigatorProps = {
+    activeCarIndex: number
+}
 
 const Tab = createMaterialTopTabNavigator<MaterialTopNavigatorType>();
-
-const MockScreen = () => <></>;
 
 const getTabBarLabel = (isFocus: boolean, label: string) => {
   return (
@@ -28,10 +34,12 @@ const getScreenOptions = ({ route }: { route: Route }):  MaterialTopTabNavigatio
     getTabBarLabel(focused, TEXT.materialTop[route.name as keyof typeof TEXT.materialTop])
   ),
   tabBarItemStyle: {
+    height: 40,
+    justifyContent: 'flex-start',
     width: 100,
   },
   tabBarIndicatorStyle: {
-    backgroundColor: 'transparent',
+    height: 0,
   },
   tabBarPressColor: 'transparent',
   tabBarContentContainerStyle: {
@@ -39,14 +47,20 @@ const getScreenOptions = ({ route }: { route: Route }):  MaterialTopTabNavigatio
     marginRight: 10,
   },
   tabBarStyle: {
+    height: 40,
     elevation: 0,
+    shadowColor: COLORS.white,
   },
 });
 
-export const MaterialTopNavigator = () => {
+export const MaterialTopNavigator = (props: MaterialTopNavigatorProps) => {
+  const { activeCarIndex } = props;
+
   return (
     <Tab.Navigator screenOptions={getScreenOptions}>
-      <Tab.Screen name={MaterialTopNavigatorScreenNames.services} component={MockScreen} />
+      <Tab.Screen name={MaterialTopNavigatorScreenNames.services}>
+        {props => <Services {...props} activeCarIndex={activeCarIndex} />}
+      </Tab.Screen>
       <Tab.Screen name={MaterialTopNavigatorScreenNames.subscription} component={MockScreen} />
       <Tab.Screen name={MaterialTopNavigatorScreenNames.marketplace} component={MockScreen} />
     </Tab.Navigator>
@@ -61,12 +75,12 @@ const styles = StyleSheet.create({
     left: -10,
   },
   activeLabel: {
-    fontSize: 14,
+    fontSize: scaleFontSize(14),
     fontWeight: '600',
     lineHeight: 14,
   },
   label: {
-    fontSize: 12,
+    fontSize: scaleFontSize(12),
     lineHeight: 13,
     color: COLORS.wallStreet,
   },

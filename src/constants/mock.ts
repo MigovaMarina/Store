@@ -7,6 +7,19 @@ export const INITIAL_REGION = {
   longitudeDelta: 0.0421,
 };
 
+export type Service = {
+  type: string,
+  warning?: string,
+  info: string,
+  fuel?: {
+    totalFuel: number,
+    fuelLack: number,
+    unit: string
+  },
+  sum: number,
+  total: string
+}
+
 export type Car =  {
   model: string,
   subscription: {
@@ -14,6 +27,7 @@ export type Car =  {
     end: string,
   },
   stateNumber: string,
+  services: Service[]
 }
 
 export const MOCK_CARS: Car[] = [
@@ -24,6 +38,45 @@ export const MOCK_CARS: Car[] = [
       end: '14.07.22',
     },
     stateNumber: 'К 332 МВ 777',
+    services: [
+      {
+        type: 'refuel',
+        warning: 'Мало топлива',
+        info: 'АИ-95',
+        fuel: {
+          totalFuel: 80,
+          fuelLack: 60,
+          unit: 'л',
+        },
+        sum: 3325,
+        total: '~45 минут',
+      },
+      {
+        type: 'maintenance',
+        warning: 'через 934 км',
+        info: 'Масло ДВС, фильтры',
+        sum: 27200,
+        total: '~6 часов',
+      },
+      {
+        type: 'fines',
+        info: '4 новых',
+        sum: 5200,
+        total: 'Всего',
+      },
+      {
+        type: 'parking',
+        info: '№ 1119',
+        sum: 800,
+        total: '4 ч прошло',
+      },
+      {
+        type: 'gasStation',
+        info: '1,6 км',
+        sum: 49,
+        total: '1 л АИ-95',
+      },
+    ],
   },
   {
     model: 'Genesis G90',
@@ -32,6 +85,45 @@ export const MOCK_CARS: Car[] = [
       end: '14.01.23',
     },
     stateNumber: 'К 444 МВ 777',
+    services: [
+      {
+        type: 'refuel',
+        warning: 'Мало топлива',
+        info: 'АИ-95',
+        fuel: {
+          totalFuel: 80,
+          fuelLack: 40,
+          unit: 'л',
+        },
+        sum: 3325,
+        total: '~45 минут',
+      },
+      {
+        type: 'maintenance',
+        warning: 'через 934 км',
+        info: 'Масло ДВС, фильтры',
+        sum: 27200,
+        total: '~6 часов',
+      },
+      {
+        type: 'fines',
+        info: '4 новых',
+        sum: 5200,
+        total: 'Всего',
+      },
+      {
+        type: 'parking',
+        info: '№ 1119',
+        sum: 800,
+        total: '4 ч прошло',
+      },
+      {
+        type: 'gasStation',
+        info: '1,6 км',
+        sum: 49,
+        total: '1 л АИ-95',
+      },
+    ],
   },
   {
     model: 'Audi A4',
@@ -40,6 +132,45 @@ export const MOCK_CARS: Car[] = [
       end: '14.01.23',
     },
     stateNumber: 'К 333 МВ 777',
+    services: [
+      {
+        type: 'refuel',
+        warning: 'Мало топлива',
+        info: 'АИ-95',
+        fuel: {
+          totalFuel: 80,
+          fuelLack: 70,
+          unit: 'л',
+        },
+        sum: 3325,
+        total: '~45 минут',
+      },
+      {
+        type: 'maintenance',
+        warning: 'через 934 км',
+        info: 'Масло ДВС, фильтры',
+        sum: 27200,
+        total: '~6 часов',
+      },
+      {
+        type: 'fines',
+        info: '4 новых',
+        sum: 5200,
+        total: 'Всего',
+      },
+      {
+        type: 'parking',
+        info: '№ 1119',
+        sum: 800,
+        total: '4 ч прошло',
+      },
+      {
+        type: 'gasStation',
+        info: '1,6 км',
+        sum: 49,
+        total: '1 л АИ-95',
+      },
+    ],
   },
   {
     model: 'Ford Fiesta',
@@ -48,6 +179,44 @@ export const MOCK_CARS: Car[] = [
       end: '14.01.23',
     },
     stateNumber: 'К 111 МВ 777',
+    services: [
+      {
+        type: 'refuel',
+        info: 'АИ-95',
+        fuel: {
+          totalFuel: 80,
+          fuelLack: 10,
+          unit: 'л',
+        },
+        sum: 3325,
+        total: '~45 минут',
+      },
+      {
+        type: 'maintenance',
+        warning: 'через 934 км',
+        info: 'Масло ДВС, фильтры',
+        sum: 27200,
+        total: '~6 часов',
+      },
+      {
+        type: 'fines',
+        info: '4 новых',
+        sum: 5200,
+        total: 'Всего',
+      },
+      {
+        type: 'parking',
+        info: '№ 1119',
+        sum: 800,
+        total: '4 ч прошло',
+      },
+      {
+        type: 'gasStation',
+        info: '1,6 км',
+        sum: 49,
+        total: '1 л АИ-95',
+      },
+    ],
   },
   {
     model: 'Lexus GS',
@@ -56,5 +225,44 @@ export const MOCK_CARS: Car[] = [
       end: '14.01.23',
     },
     stateNumber: 'К 111 МВ 777',
+    services: [
+      {
+        type: 'refuel',
+        warning: 'Мало топлива',
+        info: 'АИ-95',
+        fuel: {
+          totalFuel: 80,
+          fuelLack: 60,
+          unit: 'л',
+        },
+        sum: 3325,
+        total: '~45 минут',
+      },
+      {
+        type: 'maintenance',
+        warning: 'через 934 км',
+        info: 'Масло ДВС, фильтры',
+        sum: 27200,
+        total: '~6 часов',
+      },
+      {
+        type: 'fines',
+        info: '4 новых',
+        sum: 5200,
+        total: 'Всего',
+      },
+      {
+        type: 'parking',
+        info: '№ 1119',
+        sum: 800,
+        total: '4 ч прошло',
+      },
+      {
+        type: 'gasStation',
+        info: '1,6 км',
+        sum: 49,
+        total: '1 л АИ-95',
+      },
+    ],
   },
 ];

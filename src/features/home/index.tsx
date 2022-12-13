@@ -1,20 +1,20 @@
-import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 
 import CustomStatusBar from '../../components/CustomStatusBar';
-import { Map } from '../../components/Map';
 import { MainHeader } from './components/MainHeader';
 
 import { COLORS } from '../../constants/colors';
+import { MaterialTopNavigator } from '../../navigation/MaterialTopNavigator';
 
 export const HomeScreen = () => {
+  const [activeCarIndex, setCarActiveIndex] = useState(0);
+
   return (
     <View style={styles.container}>
-      <CustomStatusBar barStyle={'light-content'} backgroundStyle={styles.backgroundStyle}/>
-      <MainHeader />
-      <ScrollView style={{ paddingHorizontal: 20 }}>
-        <Map containerStyle={styles.map} />
-      </ScrollView>
+      <CustomStatusBar backgroundStyle={styles.backgroundStyle} barStyle={'light-content'} />
+      <MainHeader activeCarIndex={activeCarIndex} setCarActiveIndex={setCarActiveIndex} />
+      <MaterialTopNavigator activeCarIndex={activeCarIndex} />
     </View>
   );
 };
@@ -26,11 +26,5 @@ const styles = StyleSheet.create({
   },
   backgroundStyle: {
     backgroundColor: COLORS.seaMariner,
-  },
-  map: {
-    width: '100%',
-    aspectRatio: 1,
-    borderRadius: 20,
-    overflow: 'hidden',
   },
 });
